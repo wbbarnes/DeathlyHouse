@@ -1,0 +1,215 @@
+*******************************************************************************
+* Game Map RULES for Rooms:
+*
+* 1. The Keyword "rooms:" MUST be present in this file, with a number following
+*   it that is no less than one (1) and no more than the amount of rooms needed
+*   by the game. ONLY the first ocurrance of this keyword is read and used.
+* 2. The Room Number (room:) MUST NOT be zero (0) That room number is reserved.
+*   "room: 0" will FAIL.
+* 3. Room "name:" and "desc:" MUST be present for each room
+* 4. The keywords "exit:" "blocked:" and "permBlocked" are optional. IF not
+*   present, no exits of those types will exist.
+* 5. The format for directions are: N S E W NE NW SE SW Up Dn
+* 6. ALL directions must be present if one or more are. Use 0 for non-existant
+*   or unused directions.
+* 7. The keyword "reqItems:" is optional. IF not present, no items will be
+*   required to access that room.
+* 8. Up to five (5) items are allowed for "reqItems:" Any more will be ignored
+* 9. When the "reqItems:" keyword is used, all unused item slots (5 ttl) MUST
+*   be filled. Use 0 for unused slots.
+* A. All unused keywords will use their default values.
+* B. DO NOT place zeros (0) before item number in "reqItems:" as any item
+*	listed AFTER a zero WILL BE IGNORED.
+* C. true and false are defined as 1 for true, and 0 for false.
+* D. ONLY ONE blocked direction per room!
+*******************************************************************************
+*
+* The following is the given definition for each keyword:
+*******************************************************************************
+* rooms:                * The amount of rooms in the game (1-?)
+* room:                 * The room number (1-?)
+* name:                 * The name of the room
+* desc:                 * The description of the room
+* exit:                 * Obvious exits.              N S E W NE NW SE SW Up Dn
+* blocked:              * Unblockable exits           0 0 0 0  0  0  0  0  0  0
+* permBlocked:          * Permanently blocked exits   # # # # #  #  #  #  #  #
+* reqItem:              * Items required in inventory or equiped to enter room
+*******************************************************************************
+rooms: 34
+
+room: 1
+name: Hospital Room
+desc: This is the hospital room of your sick and unexplicably dying friend. Other than that, this room is like any other hospital room you have ever visited with the usual amenities.
+exit: 0 0 0 2 0 0 0 0 0 0
+
+room: 2
+name: Taxi Cab
+desc: Your in a typical taxi taking you where you want to go.
+
+room: 3
+name: Outside House
+desc: You are outside of your friends home From the outside it seems to be a normal brick with white siding dwelling with an attached garage. There is a light on inside.
+exit: 0 0 4 5 0 0 0 0 0 0
+blocked: 8 0 0 0 0 0 0 0 0 0 
+
+room: 4
+name: Down the street
+desc: You have walked down the street a ways. The neighborhood looks normal enough
+exit: 0 0 5 3 0 0 0 0 0 0
+
+room: 5
+name: Down the street
+desc: You have walked down the street a ways. The neighborhood looks normal enough.
+exit: 0 0 3 4 0 0 0 0 0 0
+
+* friend's house
+room: 6
+name: Bedroom
+desc: you are in the bedroom
+exit: 9 0 0 0 0 0 0 0 0 0
+
+room: 7
+name: Small Bedroom
+desc: you are in the bedroom
+exit: 10 0 0 0 0 0 0 0 0 0
+
+room: 8
+name: Living Room
+desc: you are in the Living room
+exit: 14 0 0 10 0 13 0 0 0 0
+blocked: 0 3 0 0 0 0 0 0 0 0
+reqItem: 7 0 0 0 0
+
+room: 9
+name: west half of hallway
+desc: you are in the West half of the halway
+exit: 12 6 10 11 0 0 0 0 0 0
+
+room: 10
+name: east half of hallway
+desc: you are in the East half of the hallway
+exit: 13 7 8 9 0 0 0 0 0 0
+
+room: 11
+name: Master Bedroom
+desc: you are in the bedroom
+exit: 0 0 9 0 0 0 0 0 0 0
+
+room: 12
+name: Bathroom
+desc: you are in the bathroom. It looks as if he kept it pretty clean too.
+exit: 0 9 0 0 0 0 0 0 0 0
+
+room: 13
+name: Kitchen
+desc: you are in the Kitchen.
+exit: 0 10 14 0 0 0 8 0 0 15
+
+room: 14
+name: Dining Room
+desc: you are in the Dining Room
+exit: 0 8 0 13 0 0 0 0 0 0
+
+room: 15
+name: Basement
+desc: you are in the basement. The basement feels even more odd than the rest of the house. There is a mirror on the west wall that is giving you the creeps.
+exit: 0 0 0 0 0 0 0 0 13 0
+
+* Mirror house
+room: 16
+name: Mirror Basement
+desc: you are in the basement. The basement feels even more odd than the rest of the house. There is a mirror on the west wall that is giving you the creeps.
+exit: 0 0 0 0 0 0 0 0 19 0
+
+room: 17
+name: Mirror Master Bedroom
+desc: you are in the bedroom
+exit: 0 0 21 0 0 0 0 0 0 0
+
+room: 18
+name: Mirror Bathroom
+desc: you are in the bathroom. It looks as if he kept it pretty clean too.
+exit: 21 0 0 0 0 0 0 0 0 0
+
+room: 19
+name: Mirror Kitchen
+desc: you are in the Kitchen.
+exit: 22 0 20 0 23 0 0 0 0 16
+
+room: 20
+name: Mirror Dining Room
+desc: you are in the Dining Room
+exit: 23 0 0 19 0 0 0 0 0 0
+
+room: 21
+name: Mirror west half of hallway
+desc: you are in the West half of the halway
+exit: 24 18 22 17 0 0 0 0 0 0
+
+room: 22
+name: east half of hallway
+desc: you are in the East half of the hallway
+exit: 25 19 23 21 0 0 0 0 0 0
+
+room: 23
+name: Living Room
+desc: you are in the Living room
+exit: 0 20 0 22 0 0 0 19 0 0
+permBlocked: 1 0 0 0 0 0 0 0 0 0
+
+room: 24
+name: Mirror Bedroom
+desc: you are in the bedroom
+exit: 0 21 0 0 0 0 0 0 0 0
+
+room: 25
+name: Small Mirror Bedroom
+desc: you are in the bedroom
+exit: 0 22 0 0 0 0 0 0 0 0
+
+* Maze
+room: 26
+name: Maze
+desc: you are in a twisty maze inside the mirror. It could be easy to get lost.
+exit: 31 29 27 31 30 31 29 31 0 0
+
+room: 27
+name: Maze
+desc: you are in a twisty maze inside the mirror. It could be easy to get lost.
+exit: 29 31 28 26 29 31 29 29 0 0
+
+room: 28
+name: Maze
+desc: you are in a twisty maze inside the mirror. It could be easy to get lost. The mirror feels nearby.
+exit: 31 29 15 27 29 31 29 31 0 0
+
+room: 29
+name: Maze
+desc: you are in a twisty maze inside the mirror. It could be easy to get lost.
+exit: 31 31 31 31 31 31 31 31 0 0
+
+room: 30
+name: Maze
+desc: you are in a twisty maze inside the mirror. It could be easy to get lost.
+exit: 29 29 31 31 29 32 29 26 0 0
+
+room: 31
+name: Maze
+desc: you are in a twisty maze inside the mirror. It could be easy to get lost.
+exit: 29 29 29 28 29 29 29 29 0 0
+
+room: 32
+name: Maze
+desc: you are in a twisty maze inside the mirror. It could be easy to get lost.
+exit:  31 31 33 31 29 31 29 29 0 0
+
+room: 33
+name: Maze
+desc: you are in a twisty maze inside the mirror. It could be easy to get lost.
+exit: 29 31 34 32 29 31 29 29 0 0
+
+room: 34
+name: Maze
+desc: you are in a twisty maze inside the mirror. It could be easy to get lost. The mirror feels nearby.
+exit: 31 29 16 33 29 31 29 31 0 0
+

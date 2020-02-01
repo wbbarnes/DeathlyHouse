@@ -1,0 +1,227 @@
+*******************************************************************************
+* Game Map RULES for Items:
+*
+* 1. The Keyword "items:" MUST be present in this file, with a number following
+*   it that is no less than one (1) and no more than the amount of items needed
+*   by the game. ONLY the first ocurrance of this keyword is read and used.
+* 2. The Item Number (item:) MUST NOT be zero (0) That item number is reserved.
+*   "item: 0" will FAIL.
+* 3. Item "name:" and "desc:" MUST be present for each item
+* 4. roomPass can contain a zero (0) if item is not a portal. otherwise it must
+*	contain a valid room number
+* 5. ALL is* definitions must be true or false, in lower case. ALL else is
+*	considered false. (Warning on std error will be issued.)
+* 6. A location may be -1 for player inventory, 0 for not available/gone/used
+*	up.
+* 7. The keyword "reqItems:" is optional. IF not present, no items will be
+*   required to use that item.
+* 8. Up to five (5) items are allowed for "reqItems:" Any more will be ignored
+* 9. When the "reqItems:" keyword is used, all unused item slots (5 ttl) MUST
+*   be filled. Use 0 for unused slots. Use the item number for the req. item.
+* A. Up to five (5) items can be hidden by this item.  Use the item number for
+*	the hidden item, use 0 for all unused slots.
+* B. All unused keywords will use their default values.
+* C. DO NOT place zeros (0) before items, only use them to pad at the end.
+* D. True and false are defined with the words true and false respectively.
+* E. To limit the number of items hidden by an item, assign an item # of -2 for
+*	each item slot, at the beginning of the list.
+* F. isKey is optional, but defines if a required item (parallel position) is
+*	to be used as a key for a lock or if it is just a portkey (req to pass into)
+*******************************************************************************
+*
+* The following is the given definition for each keyword:
+*******************************************************************************
+* items:				* The number of Items in-game:
+* item:					* The Item Number
+* name:					* The name of the item
+* desc:					* the Item's description
+* location:				* Where on the map the item is located
+* roomPass:				* Room item is a portal to if not room 0
+* hides:				* Items hidden until this item is moved
+* reqItem:				* Items required in inventory or equiped to use/get item
+* health:				* health status of item, or HP if enemy
+* damage:				* damage delivery if used as weapon
+* moves:				* if enemy, moves must be defeated in to beat.
+* isPriority:			* can't do anything else until dealt with: true OR false
+* isDeath:				* can kill the player: true OR false
+* isDead:				* is no longer a threat or priority: true OR false
+* isAttackable:			* can be attacked/broken: true OR false
+* isCollectable:		* can be added to inventory: true OR false
+* isMovable:			* can be moved to unblock an exit: true OR false
+* isWeapon:				* can be used as a weapon: true OR false
+* isEquipped:			* can equip the item: true OR false
+* isDroppable:			* player can discard the item: true OR false
+* isKey					* Item is considered a Key (1) or port key (0)
+*******************************************************************************
+items: 24
+
+* the mirrors
+item: 1
+name: red mirror
+desc: This mirror seems to be very odd indeed, It looks as if you can pass right through it.
+location: 15
+roomPass: 28
+reqItem: 3 0 0 0 0
+isMovable: false
+isCollectable: false
+
+item: 2
+name: blue mirror
+desc: This mirror seems to be very odd indeed, It looks as if you can pass right through it.
+location: 16
+roomPass: 34
+reqItem: 4 0 0 0 0
+isMovable: false
+isCollectable: false
+
+* orbs for mirror passage
+item: 3
+name: red orb
+desc: The orb gives off a faintly glowing light
+location: 12
+isCollectable: true
+isDroppable: true
+
+item: 4
+name: blue orb
+desc: The orb gives off a faintly glowing light
+location: 0
+isCollectable: true
+isDroppable: true
+
+* your friend
+item: 5
+name: Joe
+desc: Joe looks as healthy as can be, but yet, he is dying and the doctors have no clue. The only thing you can remember in his life that is new, is his home.
+location: 1
+
+* house entry items
+item: 6
+name: door mat
+desc: This looks like your average door mat. However, one corner seems to be slightly bent.
+location: 3
+hides: 7 0 0 0 0
+isMovable: true
+
+item: 7
+name: house key
+desc: It looks like an ordinary key that is used on a door to lock or unlock a door
+location: 0
+isCollectable: true
+isDroppable: true
+
+* other items
+item: 8
+name: hospital bed
+desc: it is your average everyday hospital bed, except your friend Joe happens to be dying on it!
+location: 1
+
+item: 9
+name: Door
+desc:  It is a standard looking front door. This one happens to to be your freinds' front door and you are standing on his porch.
+location: 3
+reqItem: 7 0 0 0 0
+
+item: 10
+name: Front Door
+desc: It is a standard looking front door. This one happens to to be your freinds' front door and you are inside the house.
+reqItem: 7 0 0 0 0
+location: 8
+
+item: 11
+name: Driver
+desc: He looks like your typical Cab driver. Perhaps you should tell him where you want to go.
+location: 2
+
+item: 12
+name: Joe's House
+desc: It seems to be a normal brick with white siding dwelling with an attached garage. There is something very odd about the light inside."
+location: 3
+
+* the weapon and its parts.
+item: 13
+name: sword
+desc: This is a crudely crafted sword made by you. It is very sharp.
+location: 0
+reqItem: 14 15 16 17 18
+isWeapon: true
+damage: 40
+isCollectable: true
+isDroppable: true
+
+item: 14
+name: sword hilt
+desc: This is the handle piece to a sword.
+location: 11
+isCollectable: true
+isDroppable: true
+
+item: 15
+name: hilt guard
+desc: this it the guard to protect someones hands on a sword
+location: 25
+isCollectable: true
+isDroppable: true
+
+item: 16
+name: sword blade
+desc: this is the crude blade portion of a sword
+location: 23
+isCollectable: true
+isDroppable: true
+
+item: 17
+name: whetstone
+desc: this can sharpen something, like a sword
+location: 0
+isCollectable: true
+isDroppable: true
+
+item: 18
+name: hammer
+desc: this is a tool that can be used to help make something
+location: 0
+isCollectable: true
+isDroppable: true
+
+* This is our vile and evil creature causing all the problems
+item: 19
+name: beast
+desc: The appearance of this beast is so horrid, you begin to feel ill in its presence.
+location: 17
+health: 100
+isDeath: true
+isAttackable: true
+isDead: false
+isPriority: true
+moves: 7
+isMovable: true
+hides: 4 22 0 0 0
+
+item: 20
+name: toilet
+desc: This toilet. is clean. However upon further inspection, it seems like it is loose
+location: 12
+hides: 17 18 0 0 0
+isMovable: true
+
+item: 21
+name: dirty toilet
+desc: This toilet smells and looks nasty
+location: 18
+
+item: 22
+name: medicine
+desc: This is a strange medicine that was cocealed by the beast, perhaps it will help Joe get better
+location: 0
+isCollectable: true
+
+item: 23
+name: too small
+desc: too small
+location: 0
+
+item: 24
+name: too
+desc: small
+location: 0
